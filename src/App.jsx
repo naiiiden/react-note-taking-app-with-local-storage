@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 function App() {
+  const [notes, setNotes] = useState([]);
   const [addNewNote, setAddNewNote] = useState({
     "title": "",
     "body": "",
@@ -8,11 +9,10 @@ function App() {
 
   console.log(addNewNote);
 
-  const notes = [];
-
   const handleNewNoteSubmit = (e) => {
     e.preventDefault();
-    notes.push(addNewNote);
+    
+    setNotes((prevNotes) => [...prevNotes, addNewNote]);
     console.log('notes after submit', notes);
     setAddNewNote({ title: "", body: "" })
   }
