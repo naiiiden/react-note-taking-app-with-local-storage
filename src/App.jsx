@@ -1,13 +1,24 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+    const savedNotes = localStorage.getItem("noteTakingApp");
+    // const initialValue = JSON.parse(savedNotes);
+    // return initialValue || [];
+    return savedNotes ? JSON.parse(savedNotes) : [];
+
+  });
   const [addNewNote, setAddNewNote] = useState({
     "title": "",
     "body": "",
   });
 
   console.log(addNewNote);
+
+  useEffect(() => {
+    // https://blog.logrocket.com/using-localstorage-react-hooks/
+    localStorage.setItem("noteTakingApp", JSON.stringify(notes));
+  }, [notes]);
 
   const handleNewNoteSubmit = (e) => {
     e.preventDefault();
