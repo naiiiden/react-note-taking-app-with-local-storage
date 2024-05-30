@@ -31,11 +31,13 @@ function App() {
         </label>
         <input id="note-submit" type="submit" value="add note"/>
       </form>
-      <ul>
-        {notes.map((item, i) => (
-          <li key={i}>title: {item.title}, body: {item.body}</li>
-        ))}
-      </ul>
+      {notes.length > 0 && 
+        <ul>
+          {notes.map((item, i) => (
+            <li key={i}>title: {item.title}, body: {item.body}</li>
+          ))}
+        </ul>
+      }
     </main>
   )
 }
