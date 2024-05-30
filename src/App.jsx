@@ -8,8 +8,13 @@ function App() {
 
   console.log(addNewNote);
 
+  const notes = [];
+
   const handleNewNoteSubmit = (e) => {
     e.preventDefault();
+    notes.push(addNewNote);
+    console.log('notes after submit', notes);
+    setAddNewNote({ title: "", body: "" })
   }
 
   return (
@@ -18,11 +23,11 @@ function App() {
       <form onSubmit={handleNewNoteSubmit}>
         <label htmlFor="note-title">
           <span>Note title:</span>
-          <input onInput={(e) => setAddNewNote({...addNewNote, title: e.target.value})} id="note-title" type="text" placeholder="note title"/>
+          <input onInput={(e) => setAddNewNote({...addNewNote, title: e.target.value})} value={addNewNote.title} id="note-title" type="text" placeholder="note title"/>
         </label>
         <label htmlFor="note-body">
           <span>Note body:</span>
-          <textarea onInput={(e) => setAddNewNote({...addNewNote, body: e.target.value})} id="note-body" type="text" placeholder="note body"></textarea>
+          <textarea onInput={(e) => setAddNewNote({...addNewNote, body: e.target.value})} value={addNewNote.body} id="note-body" type="text" placeholder="note body"></textarea>
         </label>
         <input id="note-submit" type="submit" value="add note"/>
       </form>
