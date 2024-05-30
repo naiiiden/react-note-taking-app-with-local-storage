@@ -12,9 +12,9 @@ function App() {
   const handleNewNoteSubmit = (e) => {
     e.preventDefault();
     
-    setNotes((prevNotes) => [...prevNotes, addNewNote]);
+    setNotes((prevNotes) => [...prevNotes, { title: addNewNote.title, body: addNewNote.body, id: crypto.randomUUID() }]);
     console.log('notes after submit', notes);
-    setAddNewNote({ title: "", body: "" })
+    setAddNewNote({ title: "", body: "" });
   }
 
   return (
@@ -33,8 +33,8 @@ function App() {
       </form>
       {notes.length > 0 && 
         <ul>
-          {notes.map((item, i) => (
-            <li key={i}>title: {item.title}, body: {item.body}</li>
+          {notes.map((item) => (
+            <li key={item.id}>title: {item.title}, body: {item.body}</li>
           ))}
         </ul>
       }
