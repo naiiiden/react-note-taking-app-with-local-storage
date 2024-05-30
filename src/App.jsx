@@ -11,10 +11,14 @@ function App() {
 
   const handleNewNoteSubmit = (e) => {
     e.preventDefault();
-    
-    setNotes((prevNotes) => [...prevNotes, { title: addNewNote.title, body: addNewNote.body, id: crypto.randomUUID() }]);
-    console.log('notes after submit', notes);
-    setAddNewNote({ title: "", body: "" });
+
+    if (addNewNote.title === "") {
+      console.error("note title can't be empty");
+    } else {
+      setNotes((prevNotes) => [...prevNotes, { title: addNewNote.title, body: addNewNote.body, id: crypto.randomUUID() }]);
+      console.log('notes after submit', notes);
+      setAddNewNote({ title: "", body: "" });
+    }
   }
 
   return (
