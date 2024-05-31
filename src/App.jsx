@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import NoteListItem from "./components/NoteListItem";
 
 function App() {
   const [notes, setNotes] = useState(() => {
@@ -49,7 +50,7 @@ function App() {
       {notes.length > 0 && 
         <ul>
           {notes.map((item) => (
-            <li key={item.id}>title: {item.title}, body: {item.body}</li>
+            <NoteListItem key={item.id} item={item}/>
           ))}
         </ul>
       }
