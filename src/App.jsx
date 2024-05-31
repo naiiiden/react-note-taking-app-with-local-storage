@@ -16,7 +16,7 @@ function App() {
               <NoteList/>
             </>
           }/>
-          <Route path="/test" element={<SingleNote/>}/>  
+          <Route path="/note/:noteId" element={<SingleNote/>}/>  
         </Routes>
       </main>
     </NotesProvider>
