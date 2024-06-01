@@ -15,7 +15,7 @@ const SingleNote = () => {
 
     const deleteNote = () => {
         setNotes(notes.filter((item) => item.id !== noteId));
-        navigate("/");
+        navigate(-1);
     }
 
     if (!currentNote) {
@@ -27,6 +27,7 @@ const SingleNote = () => {
             <p>title: {currentNote.title}</p>
             <p>body: {currentNote.body}</p>
             <button onClick={deleteNote}>delete note</button>
+            <button role="link" onClick={() => navigate(-1)}>go back</button>
         </main>
     )
 }
