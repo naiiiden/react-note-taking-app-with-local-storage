@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom"
 import { NotesContext } from "../context/NotesContext"
 
 const SingleNote = () => {
-    const [updateNote, setUpdateNote] = useState({ title: "", body: "" });
     const { notes, setNotes } = useContext(NotesContext);
     const { noteId } = useParams();
     const navigate = useNavigate();
-
+    
     const currentNote = notes.find((note) => note.id === noteId);
-
+    const [updateNote, setUpdateNote] = useState({ title: currentNote.title, body: currentNote.body });
+    
     const deleteNote = () => {
         setNotes(notes.filter((item) => item.id !== noteId));
         navigate(-1);
@@ -17,8 +17,7 @@ const SingleNote = () => {
 
     const handleUpdateNote = (e) => {
         e.preventDefault();
-
-        console.log("asd");
+        setNotes(notes.map((note) => note.id === noteId ? { ...note, title: updateNote.title, body: updateNote.body } : note));
     }
 
     console.log(updateNote);
@@ -37,9 +36,11 @@ const SingleNote = () => {
             <form onSubmit={handleUpdateNote}>
                 <input 
                     onInput={(e) => setUpdateNote({...updateNote, title: e.target.value})} 
+                    value={updateNote.title}
                     id="update-note-title" type="text"/>
                 <textarea 
                     onInput={(e) => setUpdateNote({...updateNote, body: e.target.value})} 
+                    value={updateNote.body}
                     id="update-note-body"></textarea>
                 <input type="submit" value="update note"/>
             </form>
