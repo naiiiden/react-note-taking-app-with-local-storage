@@ -27,7 +27,7 @@ const NoteForm = () => {
         <span>Note body:</span>
         <textarea 
           onInput={(e) => setAddNewNote({...addNewNote, body: e.target.value})} value={addNewNote.body} 
-          id="note-body" type="text" placeholder="note body"></textarea>
+          id="note-body" placeholder="note body"></textarea>
       </label>
       <input id="note-submit" type="submit" value="add note"/>
     </form>
