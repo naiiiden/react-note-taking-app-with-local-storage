@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { NotesContext } from "../context/NotesContext";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const NoteList = () => {
   const { notes } = useContext(NotesContext);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
   const notesPerPage = 5;
 
   const indexOfLastNote = currentPage * notesPerPage;
@@ -16,6 +17,8 @@ const NoteList = () => {
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
+      setSearchParams(currentPage);
+      console.log(searchParams);
     }
   };
 

@@ -10,18 +10,22 @@ const SingleNote = () => {
     // console.log("noteId", noteId);
     // console.log('notes from singlenote page', notes);
 
-    const currentBlog = notes.find((blog) => blog.id === noteId);
-    console.log("currentBlog", currentBlog);
+    const currentNote = notes.find((note) => note.id === noteId);
+    console.log("currentNote", currentNote);
 
     const deleteNote = () => {
         setNotes(notes.filter((item) => item.id !== noteId));
         navigate("/");
     }
 
+    if (!currentNote) {
+        return <p>note doesn't exist</p>
+    }
+
     return (
         <main>
-            <p>title: {currentBlog.title}</p>
-            <p>body: {currentBlog.body}</p>
+            <p>title: {currentNote.title}</p>
+            <p>body: {currentNote.body}</p>
             <button onClick={deleteNote}>delete note</button>
         </main>
     )
