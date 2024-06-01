@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NotesContext } from "../context/NotesContext";
 import { Link, useSearchParams } from "react-router-dom";
 
@@ -17,16 +17,24 @@ const NoteList = () => {
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
-      setSearchParams(currentPage);
-      console.log(searchParams);
+      setSearchParams({ page:currentPage + 1 });
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+      setSearchParams({ page:currentPage - 1 });
     }
   };
+
+  useEffect(() => {
+    if (searchParams.get("page") === null) {
+      setCurrentPage(1);
+    } else {
+      setCurrentPage(parseInt(searchParams.get("page")));
+    }
+  }, [currentPage, searchParams]);
 
   return (
     notes.length > 0 &&
