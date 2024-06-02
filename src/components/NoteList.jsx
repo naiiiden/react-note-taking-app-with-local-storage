@@ -49,7 +49,7 @@ const NoteList = () => {
           </li>
         ))}
       </ul>
-      <div className="mb-24 flex items-center justify-center gap-6 fixed bottom-0 mx-auto w-full left-0">
+      <div className="mb-24 flex items-center justify-center gap-6 fixed bottom-0 mx-auto w-full left-0 z-10">
         <button className="text-4xl" onClick={handlePrevPage} disabled={currentPage === 1} aria-label="Previous page">&lt;</button>
         <p className="text-lg">{currentPage}/{totalPages}</p>
         <button className="text-4xl" onClick={handleNextPage} disabled={currentPage === totalPages} aria-label="Next page">&gt;</button>    
