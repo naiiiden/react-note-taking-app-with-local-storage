@@ -8,7 +8,7 @@ function App() {
   return (
     <NotesProvider>
       <main>
-        <h1>Note taking application with local storage</h1>
+        <h1 className="bg-red-500">Note taking application with local storage</h1>
         <Routes>
           <Route path="/" element={
             <>
