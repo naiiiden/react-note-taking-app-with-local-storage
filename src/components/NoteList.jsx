@@ -38,8 +38,8 @@ const NoteList = () => {
 
   return (
     notes.length > 0 &&
-    <>
-      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 max-w-7xl mx-auto">
+    <div className="p-4 max-w-7xl mx-auto">
+      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {currentNotes.map((item) => (
           <li className="w-full max-h-64 bg-gray-800 shadow-2xl p-4 rounded-lg" key={item.id}>
             <Link to={`/note/${item.id}`}>
@@ -49,10 +49,12 @@ const NoteList = () => {
           </li>
         ))}
       </ul>
-      <button onClick={handlePrevPage} disabled={currentPage === 1}>previous</button>
-      <p>page {currentPage} of {totalPages}</p>
-      <button onClick={handleNextPage} disabled={currentPage === totalPages}>next</button>
-    </>
+      <div className="mb-24 flex items-center justify-center gap-6 fixed bottom-0 mx-auto w-full left-0">
+        <button className="text-4xl" onClick={handlePrevPage} disabled={currentPage === 1} aria-label="Previous page">&lt;</button>
+        <p className="text-lg">{currentPage}/{totalPages}</p>
+        <button className="text-4xl" onClick={handleNextPage} disabled={currentPage === totalPages} aria-label="Next page">&gt;</button>    
+      </div>
+    </div>
   )
 };
 
