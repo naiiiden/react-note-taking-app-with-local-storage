@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-const NoteForm = ({ handleFormSubmit, note, setNote, submitText }) => {
+const NoteForm = ({ className, handleFormSubmit, note, setNote, submitText }) => {
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form className={className} onSubmit={handleFormSubmit}>
         <label htmlFor="note-title">
           <span>Note title:</span>
           <input 
