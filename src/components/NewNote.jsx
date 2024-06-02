@@ -21,7 +21,7 @@ const NewNote = () => {
     <>
       <button onClick={() => setOpenNewNoteForm(!openNewNoteForm)} className="fixed bottom-4 right-0 left-0 mx-auto text-5xl font-light shadow-2xl bg-red-500 rounded-full w-16 h-16 grid place-content-center" aria-label="Add a new note">+</button>
       <NoteForm
-        className={`${openNewNoteForm ? 'scale-y-100 scale-x-100' : 'scale-y-0 scale-x-0'} transition-all origin-bottom fixed bottom-28 left-0 right-0 w-fit mx-auto border p-4 grid`}
+        className={`${openNewNoteForm ? 'scale-y-100 scale-x-100' : 'scale-y-0 scale-x-0'} bg-gray-800 shadow-2xl rounded-lg transition-all origin-bottom fixed bottom-28 left-0 right-0 w-fit mx-auto p-4 grid`}
         handleFormSubmit={handleNewNoteSubmit}
         note={addNewNote}
         setNote={setAddNewNote}

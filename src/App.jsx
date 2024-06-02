@@ -7,9 +7,9 @@ import SingleNote from "./pages/SingleNote";
 function App() {
   return (
     <NotesProvider>
-      <div className="">
+      <div className="bg-gray-900 text-white min-h-screen">
         <main>
-          <h1 className="bg-red-500">Note taking application with local storage</h1>
+          <h1>Note taking application with local storage</h1>
           <NewNote/>
           <Routes>
             <Route path="/" element={
