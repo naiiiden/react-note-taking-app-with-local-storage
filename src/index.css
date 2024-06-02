@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes open-note {
+    0% {
+        transform: scale(0) translate(-50%, -50%);
+        transform-origin: top left;
+    }
+    100% {
+        transform: scale(1) translate(-50%, -50%);
+        transform-origin: top left;
+    }
+  }
+  
+.note-modal {
+    animation: open-note .2s forwards;
+}
+
+@keyframes close-note {
+    100% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+}
