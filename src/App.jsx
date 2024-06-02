@@ -7,18 +7,20 @@ import SingleNote from "./pages/SingleNote";
 function App() {
   return (
     <NotesProvider>
-      <main>
-        <h1 className="bg-red-500">Note taking application with local storage</h1>
-        <Routes>
-          <Route path="/" element={
-            <>
-              <NoteForm/>
-              <NoteList/>
-            </>
-          }/>
-          <Route path="/note/:noteId" element={<SingleNote/>}/>  
-        </Routes>
-      </main>
+      <div className="">
+        <main>
+          <h1 className="bg-red-500">Note taking application with local storage</h1>
+          <NoteForm/>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <NoteList/>
+              </>
+            }/>
+            <Route path="/note/:noteId" element={<SingleNote/>}/>  
+          </Routes>
+        </main>
+      </div>
     </NotesProvider>
   )
 }
