@@ -9,7 +9,9 @@ function App() {
     <NotesProvider>
       <div className="bg-gray-900 text-white min-h-screen">
         <main>
-          <h1>Note taking application with local storage</h1>
+          <h1 className="bg-red-600 lg:text-xl">
+            <span className="px-4 py-2 max-w-7xl mx-auto block">Note taking application with local storage</span>
+          </h1>
           <NewNote/>
           <Routes>
             <Route path="/" element={

@@ -6,7 +6,7 @@ const NoteList = () => {
   const { notes } = useContext(NotesContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
-  const notesPerPage = 5;
+  const notesPerPage = 7;
 
   const indexOfLastNote = currentPage * notesPerPage;
   const indexOfFirstNote = indexOfLastNote - notesPerPage;
@@ -39,11 +39,12 @@ const NoteList = () => {
   return (
     notes.length > 0 &&
     <>
-      <ul>
+      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 max-w-7xl mx-auto">
         {currentNotes.map((item) => (
-          <li key={item.id}>
+          <li className="w-full max-h-64 bg-gray-800 shadow-2xl p-4 rounded-lg" key={item.id}>
             <Link to={`/note/${item.id}`}>
-              title: {item.title}, body: {item.body}
+              <h3 className="lg:text-xl mb-4">{item.title}</h3>
+              <p className="h-32 lg:text-lg">{item.body.length > 100 ? item.body.slice(0, 65) + '...' : item.body}</p>
             </Link>
           </li>
         ))}

@@ -4,7 +4,7 @@ import { createContext, useState, useEffect } from "react";
 export const NotesContext = createContext();
 
 const dummyNotes = [
-    { title: 'First Note', body: 'This is the body of the first note.', id: crypto.randomUUID() },
+    { title: 'First Note', body: 'This is the body of the first note. This is the body of the first note.This is the body of the first note. This is the body of the first note.', id: crypto.randomUUID() },
     { title: 'Second Note', body: 'This is the body of the second note.', id: crypto.randomUUID() },
     { title: 'Third Note', body: 'This is the body of the third note.', id: crypto.randomUUID() },
     { title: 'Fourth Note', body: 'This is the body of the fourth note.', id: crypto.randomUUID() },
