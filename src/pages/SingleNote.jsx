@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { NotesContext } from "../context/NotesContext"
+import NoteForm from "../components/NoteForm";
 
 const SingleNote = () => {
     const { notes, setNotes } = useContext(NotesContext);
@@ -23,7 +24,7 @@ const SingleNote = () => {
     console.log(updateNote);
 
     if (!currentNote) {
-        return <p>note doesn't exist</p>
+        return <p>note doesn&apos;`t exist</p>
     }
 
     return (
@@ -33,17 +34,12 @@ const SingleNote = () => {
             <button onClick={deleteNote}>delete note</button>
             <button role="link" onClick={() => navigate(-1)}>go back</button>
             <h2>update note:</h2>
-            <form onSubmit={handleUpdateNote}>
-                <input 
-                    onInput={(e) => setUpdateNote({...updateNote, title: e.target.value})} 
-                    value={updateNote.title}
-                    id="update-note-title" type="text"/>
-                <textarea 
-                    onInput={(e) => setUpdateNote({...updateNote, body: e.target.value})} 
-                    value={updateNote.body}
-                    id="update-note-body"></textarea>
-                <input type="submit" value="update note"/>
-            </form>
+            <NoteForm
+                handleFormSubmit={handleUpdateNote}
+                note={updateNote}
+                setNote={setUpdateNote}
+                submitText={"update note"}
+            />
         </main>
     )
 }
