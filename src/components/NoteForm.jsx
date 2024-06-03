@@ -2,7 +2,9 @@
 const NoteForm = ({ className, handleFormSubmit, inert, formTitle, note, setNote, submitText }) => {
   return (
     <form className={className} onSubmit={handleFormSubmit} {...(inert ? { inert: "inert" } : {})}>
-        {/* In NoteForm.jsx, we conditionally spread the inert attribute if it's true using {...(inert ? { inert: "inert" } : {})}. This syntax dynamically adds the inert attribute if the inert prop is true, making the form and its children non-interactive. */}
+        {/* We conditionally spread the inert attribute if it's true using {...(inert ? { inert: "inert" } : {})}. 
+         This syntax dynamically adds the inert attribute if the inert prop is true, 
+         making the form and its children non-interactive. */}
         <h2 className="bg-red-600 rounded-t-lg px-4 py-1 text-center text-lg">{formTitle}</h2>
         <div className="p-4 grid gap-4">
           <label className="grid gap-[.125rem]" htmlFor="note-title">

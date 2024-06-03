@@ -44,7 +44,7 @@ const NoteList = () => {
         {currentNotes.map((item) => (
           <li className="w-full max-h-64 bg-gray-800 shadow-2xl p-4 rounded-lg" key={item.id}>
             <Link to={`/note/${item.id}`} state={{ background: location }}>
-              <h3 className="lg:text-xl mb-4">{item.title}</h3>
+              <h3 className="lg:text-xl mb-4 font-medium">{item.title}</h3>
               <p className="h-32 lg:text-lg">{item.body.length > 100 ? item.body.slice(0, 65) + '...' : item.body}</p>
             </Link>
           </li>
