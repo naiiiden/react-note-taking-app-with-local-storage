@@ -44,7 +44,8 @@ const NoteForm = ({
         <label className="grid gap-[.125rem]" htmlFor="note-title">
           <span className="ml-1">Title:</span>
           <input
-            className="p-1 rounded-md bg-gray-700"
+            className="py-1 px-2 rounded-md bg-gray-700"
+            required
             onInput={(e) => setNote({ ...note, title: e.target.value })}
             value={note.title}
             id="note-title"
@@ -55,7 +56,8 @@ const NoteForm = ({
         <label className="grid gap-[.125rem]" htmlFor="note-body">
           <span className="ml-1">Body:</span>
           <textarea
-            className="p-1 rounded-md bg-gray-700 h-60 max-h-60 resize-none"
+            className="py-1 px-2 rounded-md bg-gray-700 h-60 max-h-60 resize-none"
+            required
             onInput={(e) => setNote({ ...note, body: e.target.value })}
             value={note.body}
             id="note-body"
