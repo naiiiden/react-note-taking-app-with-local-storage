@@ -21,6 +21,7 @@ const SingleNote = () => {
 
   const deleteNote = () => {
     setNotes(notes.filter((item) => item.id !== noteId));
+    navigate(-1);
   };
 
   const handleUpdateNote = (e) => {
@@ -33,6 +34,10 @@ const SingleNote = () => {
       )
     );
   };
+
+  if (!currentNote) {
+    return null;
+  }
 
   return (
     <>
