@@ -27,7 +27,7 @@ const NewNote = () => {
       )}
       <button
         onClick={() => setOpenNewNoteForm(!openNewNoteForm)}
-        className="fixed bottom-4 right-0 left-0 mx-auto text-5xl font-light shadow-2xl bg-red-600 rounded-full w-16 h-16 grid place-content-center"
+        className="fixed bottom-4 right-0 left-0 mx-auto text-5xl font-light shadow-2xl bg-red-600 rounded-full w-16 h-16"
         aria-label="Add a new note"
       >
         +
