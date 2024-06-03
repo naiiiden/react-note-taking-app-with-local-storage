@@ -3,7 +3,6 @@ import NewNote from "./components/NewNote";
 import NoteList from "./components/NoteList";
 import { NotesProvider } from "./context/NotesContext";
 import SingleNote from "./pages/SingleNote";
-import { Note } from "./pages/Note";
 
 function App() {
   const location = useLocation();
@@ -18,12 +17,12 @@ function App() {
           </h1>
           <NewNote/>
           <Routes location={background || location}>
-            <Route path="/" element={<NoteList/>}/>
-            <Route path="/note/:noteId" element={<SingleNote/>}/>  
+            <Route path="/" element={<NoteList />}/>
+            <Route path="/note/:noteId" element={<SingleNote />}/>
           </Routes>
           {background && (
             <Routes>
-              <Route path="note" element={<Note/>} />
+              <Route path="/note/:noteId" element={<SingleNote />}/>
             </Routes>
           )}
         </main>

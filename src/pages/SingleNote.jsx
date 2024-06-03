@@ -1,47 +1,51 @@
-import { useContext, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { NotesContext } from "../context/NotesContext"
+import { useContext, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { NotesContext } from "../context/NotesContext";
 import NoteForm from "../components/NoteForm";
 
 const SingleNote = () => {
-    const { notes, setNotes } = useContext(NotesContext);
-    const { noteId } = useParams();
-    const navigate = useNavigate();
-    
-    const currentNote = notes.find((note) => note.id === noteId);
-    const [updateNote, setUpdateNote] = useState({ title: currentNote.title, body: currentNote.body });
-    
-    const deleteNote = () => {
-        setNotes(notes.filter((item) => item.id !== noteId));
-        navigate(-1);
+  const { notes, setNotes } = useContext(NotesContext);
+  const { noteId } = useParams();
+  const navigate = useNavigate();
+  const [triggerCloseAnim, setTriggerCloseAnim] = useState(false);
+
+  const currentNote = notes.find((note) => note.id === noteId);
+  const [updateNote, setUpdateNote] = useState({ title: "", body: "" });
+
+  useEffect(() => {
+    if (currentNote) {
+      setUpdateNote({ title: currentNote.title, body: currentNote.body });
     }
+  }, [currentNote]);
 
-    const handleUpdateNote = (e) => {
-        e.preventDefault();
-        setNotes(notes.map((note) => note.id === noteId ? { ...note, title: updateNote.title, body: updateNote.body } : note));
-    }
+  const deleteNote = () => {
+    setNotes(notes.filter((item) => item.id !== noteId));
+  };
 
-    console.log(updateNote);
+  const handleUpdateNote = (e) => {
+    e.preventDefault();
+    setNotes(notes.map((note) => note.id === noteId ? { ...note, title: updateNote.title, body: updateNote.body } : note));
+  };
 
-    if (!currentNote) {
-        return <p>note doesn&apos;`t exist</p>
-    }
+  if (!currentNote) {
+    return <p>Note doesn&apos;t exist</p>;
+  }
 
-    return (
-        <main>
-            <p>title: {currentNote.title}</p>
-            <p>body: {currentNote.body}</p>
-            <button onClick={deleteNote}>delete note</button>
-            <button role="link" onClick={() => navigate(-1)}>go back</button>
-            <h2>update note:</h2>
-            <NoteForm
-                handleFormSubmit={handleUpdateNote}
-                note={updateNote}
-                setNote={setUpdateNote}
-                submitText={"update note"}
-            />
-        </main>
-    )
-}
+  return (
+    <div className={`${triggerCloseAnim ? "note-modal-close" : ""} note-modal h-auto w-auto fixed top-1/2 left-1/2 bg-gray-800 p-4 transform -translate-x-1/2 -translate-y-1/2`}>
+      <button onClick={() => (setTriggerCloseAnim(true), setTimeout(() => navigate(-1), 200))}>XXX</button>
+      <h3>{currentNote.title}</h3>
+      <p>{currentNote.body}</p>
+      <button onClick={deleteNote}>Delete Note</button>
+      <h2>Update Note:</h2>
+      <NoteForm
+        handleFormSubmit={handleUpdateNote}
+        note={updateNote}
+        setNote={setUpdateNote}
+        submitText={"Update Note"}
+      />
+    </div>
+  );
+};
 
-export default SingleNote
+export default SingleNote;

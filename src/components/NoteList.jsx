@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { NotesContext } from "../context/NotesContext";
-import { Link, useSearchParams, Outlet, useLocation } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 
 const NoteList = () => {
   const location = useLocation();
@@ -40,14 +40,10 @@ const NoteList = () => {
   return (
     notes.length > 0 &&
     <div className="p-4 max-w-7xl mx-auto">
-      <Link to="note" state={{ background: location }}>
-        note modal test
-      </Link>
-      <Outlet/>
       <ul className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {currentNotes.map((item) => (
           <li className="w-full max-h-64 bg-gray-800 shadow-2xl p-4 rounded-lg" key={item.id}>
-            <Link to={`/note/${item.id}`}>
+            <Link to={`/note/${item.id}`} state={{ background: location }}>
               <h3 className="lg:text-xl mb-4">{item.title}</h3>
               <p className="h-32 lg:text-lg">{item.body.length > 100 ? item.body.slice(0, 65) + '...' : item.body}</p>
             </Link>
