@@ -41,11 +41,12 @@ const SingleNote = () => {
         <h3 className="w-11/12 font-medium text-xl md:text-2xl mb-4">{currentNote.title}</h3>
         <p className="mb-4">{currentNote.body}</p>
         <div className="mt-auto ml-auto">
-          <button className="p-1 rounded-lg mr-4" onClick={() => setShowUpdateNoteForm(!showUpdateNoteForm)}>Edit note</button>
-          <button className="bg-red-600 p-1 rounded-lg" onClick={deleteNote}>Delete note</button>
+          <button disabled={showUpdateNoteForm} className="p-1 rounded-lg mr-4" onClick={() => setShowUpdateNoteForm(!showUpdateNoteForm)}>Edit note</button>
+          <button disabled={showUpdateNoteForm} className="bg-red-600 p-1 rounded-lg" onClick={deleteNote}>Delete note</button>
         </div>
       </div>
       <NoteForm
+        inert={!showUpdateNoteForm}
         className={`${showUpdateNoteForm ? 'translate-x-0' : 'translate-x-full'} transition-all absolute inset-0`}
         handleFormSubmit={handleUpdateNote}
         formTitle={"Update note"}
