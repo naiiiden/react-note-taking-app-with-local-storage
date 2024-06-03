@@ -6,7 +6,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="react-note-taking-app-with-local-storage">
       <App />
     </BrowserRouter>
   </React.StrictMode>
