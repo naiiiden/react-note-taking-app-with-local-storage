@@ -22,3 +22,13 @@ npm run dev
 ```
 
 and open `http://localhost:5173/` in the browser
+
+## Components usage:
+### 1. NewNote:
+Handles the creation of new notes by managing the state of a new note and displaying a form to add the note.
+
+### 2. NoteForm:
+A reusable form component for creating or editing a note.
+
+### 3. NoteList:
+Displays a paginated list of notes and handles pagination.
