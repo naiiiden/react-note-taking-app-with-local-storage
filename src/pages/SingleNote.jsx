@@ -35,12 +35,12 @@ const SingleNote = () => {
   return (
     <>
     <div onClick={() => (setTriggerCloseAnim(true), setTimeout(() => navigate(-1), 200))} className="fixed z-20 inset-0 bg-black/40 backdrop-blur-[1px]"></div>
-    <div className={`${triggerCloseAnim ? "note-modal-close" : ""} note-modal z-30 w-11/12 max-w-xl fixed top-1/2 left-1/2 bg-gray-800 transform -translate-x-1/2 -translate-y-1/2`}>
+    <div className={`${triggerCloseAnim ? "note-modal-close" : ""} note-modal rounded-lg z-30 w-11/12 max-w-xl fixed top-1/2 left-1/2 bg-gray-800 transform -translate-x-1/2 -translate-y-1/2`}>
       <div className="p-4">
-        <button className="w-full text-end text-2xl font-bold" onClick={() => (setTriggerCloseAnim(true), setTimeout(() => navigate(-1), 200))} aria-label="Close note">✕</button>
-        <h3>{currentNote.title}</h3>
-        <p>{currentNote.body}</p>
-        <button onClick={deleteNote}>Delete Note</button>
+        <button className="w-full leading-none text-end text-2xl font-bold" onClick={() => (setTriggerCloseAnim(true), setTimeout(() => navigate(-1), 200))} aria-label="Close note">✕</button>
+        <h3 className="w-11/12 font-medium text-xl md:text-2xl mb-4">{currentNote.title}</h3>
+        <p className="mb-4">{currentNote.body}</p>
+        <button className="bg-red-600 p-1 rounded-lg" onClick={deleteNote}>Delete Note</button>
       </div>
       <NoteForm
         handleFormSubmit={handleUpdateNote}
