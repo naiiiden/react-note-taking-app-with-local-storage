@@ -18,7 +18,17 @@
 }
 
 @keyframes close-note {
+    0% {
+        transform: scale(1) translate(-50%, -50%);
+        transform-origin: top left;
+    }
+
     100% {
         transform: scale(0) translate(-50%, -50%);
+        transform-origin: top left;
     }
+}
+
+.note-modal-close {
+    animation: close-note .2s forwards;
 }
