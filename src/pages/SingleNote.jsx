@@ -9,6 +9,7 @@ const SingleNote = () => {
   const navigate = useNavigate();
   const [triggerCloseAnim, setTriggerCloseAnim] = useState(false);
 
+
   const currentNote = notes.find((note) => note.id === noteId);
   const [updateNote, setUpdateNote] = useState({ title: "", body: "" });
 
@@ -32,7 +33,9 @@ const SingleNote = () => {
   }
 
   return (
-    <div className={`${triggerCloseAnim ? "note-modal-close" : ""} note-modal h-auto w-auto fixed top-1/2 left-1/2 bg-gray-800 p-4 transform -translate-x-1/2 -translate-y-1/2`}>
+    <>
+    <div onClick={() => (setTriggerCloseAnim(true), setTimeout(() => navigate(-1), 200))} className="fixed z-20 inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+    <div className={`${triggerCloseAnim ? "note-modal-close" : ""} note-modal z-30 h-auto w-auto fixed top-1/2 left-1/2 bg-gray-800 p-4 transform -translate-x-1/2 -translate-y-1/2`}>
       <button onClick={() => (setTriggerCloseAnim(true), setTimeout(() => navigate(-1), 200))}>XXX</button>
       <h3>{currentNote.title}</h3>
       <p>{currentNote.body}</p>
@@ -45,6 +48,7 @@ const SingleNote = () => {
         submitText={"Update Note"}
       />
     </div>
+    </>
   );
 };
 
