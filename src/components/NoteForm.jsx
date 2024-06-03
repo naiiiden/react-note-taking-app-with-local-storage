@@ -6,7 +6,7 @@ const NoteForm = ({ className, handleFormSubmit, inert, formTitle, note, setNote
          This syntax dynamically adds the inert attribute if the inert prop is true, 
          making the form and its children non-interactive. */}
         <div className="bg-red-600 px-4 py-1 rounded-t-lg flex items-center">
-          {backBtnOnClick && <button className="w-0 pr-5 text-2xl font-bold" onClick={backBtnOnClick}>←</button>}
+          {backBtnOnClick && <button className="w-0 pr-5 text-2xl font-bold" onClick={backBtnOnClick} aria-label="Go back to note">←</button>}
           <h2 className="w-full text-center text-lg">{formTitle}</h2>  
           {closeBtnOnClick && <button className="w-0 pr-3 text-2xl font-bold" onClick={closeBtnOnClick} aria-label="Close note">x</button>}
         </div>
