@@ -32,3 +32,6 @@ A reusable form component for creating or editing a note.
 
 ### 3. NoteList:
 Displays a paginated list of notes and handles pagination.
+
+## Live preview
+https://naiiiden.github.io/react-note-taking-app-with-local-storage/
