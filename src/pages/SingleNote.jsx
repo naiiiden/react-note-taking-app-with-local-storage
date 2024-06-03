@@ -42,6 +42,7 @@ const SingleNote = () => {
           </div>
         </div>
         <NoteForm
+          backBtnOnClick={() => setShowUpdateNoteForm(!showUpdateNoteForm)}
           inert={!showUpdateNoteForm}
           className={`${showUpdateNoteForm ? 'translate-x-0' : 'translate-x-full'} transition-all absolute inset-0`}
           handleFormSubmit={handleUpdateNote}
